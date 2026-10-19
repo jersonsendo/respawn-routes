@@ -1,0 +1,74 @@
+classDiagram
+direction LR
+class Destination {
+  +String id
+  +String name
+  +String location
+  +String category
+  +String description
+  +String image
+  +String[] interests
+  +Number estimatedBudget
+  +Number duration
+  +String[] activities
+  +String[] travelTips
+  +String atmosphere
+  +getBudgetLabel() String
+  +getDurationLabel() String
+  +matchesSearch(query String) Boolean
+}
+class Experience {
+  +String id
+  +String name
+  +String category
+  +String description
+  +String destinationId
+  +Number estimatedCost
+  +Number duration
+  +String[] interests
+  +getCostLabel() String
+  +getDurationLabel() String
+  +matchesSearch(query String) Boolean
+}
+class ItineraryItem {
+  +String id
+  +String itemType
+  +String referenceId
+  +String name
+  +Number estimatedCost
+  +Number duration
+  +fromDestination(d Destination)$ ItineraryItem
+  +fromExperience(e Experience)$ ItineraryItem
+}
+class UserPreferences {
+  +String[] interests
+  +String budget
+  +String availableTime
+  +String preferredSetting
+  +String travelMood
+  +isEmpty() Boolean
+  +fitsBudget(cost Number) Boolean
+  +fitsTime(hours Number) Boolean
+  +matchesSetting(category String) Boolean
+  +sharedInterests(interests String[]) String[]
+  +matchesDestination(d Destination) Boolean
+  +score(d Destination) Number
+  +explain(d Destination) String[]
+}
+class TravelPlan {
+  +String id
+  +ItineraryItem[] items
+  +Number totalBudget
+  +Number totalDuration
+  +recalculate() void
+  +hasItem(id String) Boolean
+  +addItem(item ItineraryItem) Boolean
+  +removeItem(id String) void
+  +clear() void
+  +getItemCount() Number
+}
+Experience "0..*" --> "1" Destination : destinationId refers to
+TravelPlan "1" *-- "0..*" ItineraryItem : contains
+ItineraryItem ..> Destination : created from
+ItineraryItem ..> Experience : created from
+UserPreferences ..> Destination : matches and scores
