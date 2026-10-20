@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader.jsx'
 
-const features = ['Search, filter and sort destinations by category and estimated budget', 'Match destinations to preferred interests, time and setting', 'Browse experiences and add destinations or activities to an itinerary', 'Save favorites and review trip estimates on the dashboard', 'Download a concise copy of your planned itinerary']
-const users = ['Travelers exploring Cebu and nearby destinations', 'Visitors looking for activities that fit their interests and schedule', 'Groups planning a local trip with a shared cost estimate']
-const limits = ['Prices and durations are planning estimates; confirm current details with local providers', 'Schedules, transport, weather and venue availability can change', 'Favorites, preferences and itineraries are saved in this browser', 'The Escape Finder matches preferences against the destination information included in the app']
+const features = ['Search, filter and sort destinations by category and estimated budget', 'Match destinations to interests including camping, hiking, nature and outdoor adventure', 'Browse activities and add destinations or experiences to an itinerary', 'Save favorites and review trip estimates on the dashboard', 'Download a concise copy of your planned itinerary']
+const users = ['Travelers exploring Cebu and nearby destinations', 'Outdoor enthusiasts interested in hiking, camping and nature', 'Groups planning a trip around shared interests and an estimated budget']
+const limits = ['Prices and durations are planning estimates; confirm details with local providers', 'Check permits, campsite access, weather and safety guidance before outdoor activities', 'Schedules, transport and venue availability can change', 'Favorites, preferences and itineraries are saved in this browser']
 
 function List({ title, items }) {
   return (

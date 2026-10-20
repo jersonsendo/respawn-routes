@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Search, Sparkles } from 'lucide-react'
-import destinations, { DESTINATION_CATEGORIES } from '../data/destinations.js'
+import destinations, { DESTINATION_CATEGORIES, getDestinationById } from '../data/destinations.js'
 import { EXPERIENCE_CATEGORIES } from '../data/experiences.js'
 import DestinationCard from '../components/DestinationCard.jsx'
 import SmartImage from '../components/SmartImage.jsx'
@@ -9,7 +9,11 @@ import SmartImage from '../components/SmartImage.jsx'
 export default function Home() {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
-  const featured = destinations.slice(0, 3)
+  const featured = [
+    getDestinationById('badian-matutinao'),
+    getDestinationById('kawasan-falls'),
+    getDestinationById('osmena-peak'),
+  ].filter(Boolean)
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -23,7 +27,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent" />
         <div className="container-page py-20 sm:py-28">
           <h1 className="max-w-2xl text-4xl font-extrabold text-white sm:text-6xl">Take a break. Find your next adventure.</h1>
-          <p className="mt-4 max-w-xl text-lg text-white/90">Discover places across Cebu, compare estimated costs, and plan activities around your interests, schedule, and budget.</p>
+          <p className="mt-4 max-w-xl text-lg text-white/90">Discover Cebu's coastlines, mountain trails and outdoor escapes. Find camping and adventure ideas, compare estimated costs, and plan around your schedule.</p>
           <form onSubmit={handleSearch} className="mt-8 flex max-w-xl flex-col gap-2 sm:flex-row" role="search">
             <label htmlFor="home-search" className="sr-only">Search destinations</label>
             <input id="home-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try “beach”, “waterfall” or “Badian”" className="field flex-1" />

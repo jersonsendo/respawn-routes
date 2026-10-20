@@ -8,8 +8,8 @@ A destination discovery and trip-planning application focused on Cebu, Philippin
 - **Home** `/` – hero, destination search, featured destinations, category shortcuts, Escape Finder button
 - **Explore** `/explore` – search, category filter, budget filter, sort by name or budget, empty state
 - **Destination Details** `/destinations/:id` – activities, tips, budget, duration, add to itinerary, favorite toggle, invalid-ID handling
-- **Escape Finder** `/escape-finder` – mood, time, budget and setting inputs; matching destinations with reasons; reset; empty state
-- **Experiences** `/experiences` – activity categories, search and category filter
+- **Escape Finder** `/escape-finder` – mood, time, budget and setting inputs; camping, hiking and nature recommendations with match reasons; reset; empty state
+- **Experiences** `/experiences` – activity categories including outdoor adventure, camping, hiking and nature; search and category filter
 - **Trip Planner** `/planner` – add/remove items, clear with confirmation, dynamic totals, duplicates blocked, download a text itinerary
 - **Favorites** `/favorites`, **Dashboard** `/dashboard`, **About** `/about`
 - Responsive navbar with active-route highlight, an Escape-key closable mobile menu, and mobile menu controls announced to assistive technology
@@ -57,7 +57,7 @@ respawn-routes/
 - Destinations and experiences are `new Destination({...})` / `new Experience({...})` instances exported from `src/data/`. No records are hardcoded in components.
 - Lists are rendered with `.map()` using unique `id` keys.
 - Explore and Experiences use `.filter()` (search, category, budget) and `.sort()`.
-- Escape Finder: `UserPreferences.matchesDestination()` keeps a destination only if it fits the chosen budget (cost ≤ upper limit), time (duration ≤ limit: few hours 4, one day 12, weekend 72), setting (category) and mood (shares at least one mood interest). Results are sorted by number of shared interests, and `explain()` writes the reasons. Blank groups mean "no preference". It uses plain rules, not AI or live data.
+- Escape Finder: `UserPreferences.matchesDestination()` keeps a destination only if it fits the chosen budget (cost ≤ upper limit), time (duration ≤ limit: few hours 4, one day 12, weekend 72), setting (category) and mood (shares at least one mood interest). Camping and outdoor interests are included in the recommendations. Results are sorted by number of shared interests, and `explain()` writes the reasons. Blank groups mean "no preference". It uses plain rules, not AI or live data.
 
 ## Routing and state
 `BrowserRouter` in `main.jsx`; `Routes` in `App.jsx`; `useParams` reads `:id`; `useSearchParams` pre-fills Explore/Experiences filters from Home links. `AppContext` (Context + `useState`, `useEffect`, `useMemo`) stores favorites (IDs), itinerary items and preferences, saved in `localStorage` under `rr-favorites`, `rr-itinerary`, `rr-preferences`.
@@ -71,6 +71,7 @@ respawn-routes/
 
 ## Project scope
 - Destination budgets and activity costs are planning estimates, not live quotes. Confirm prices, schedules, transport and venue availability before traveling.
+- Camping is a planning suggestion. Confirm legal campsite access, permits, facilities, weather and safety guidance with local authorities before departure.
 - The Escape Finder matches saved preferences against the destination information included in the app.
 - Favorites, preferences and itinerary items are stored in the current browser using `localStorage`.
 - The itinerary download is a text summary of the current plan; it does not make reservations.

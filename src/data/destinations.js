@@ -29,10 +29,10 @@ const destinations = [
   new Destination({
     id: 'osmena-peak', name: 'Osmeña Peak', location: 'Dalaguete, Cebu', category: 'Mountains',
     description: 'The highest point in Cebu, with a short hike and wide views of jagged green ridges.',
-    image: '/images/osmena.jpg', interests: ['hiking', 'adventure', 'nature', 'photography', 'exploration', 'sports'],
+    image: '/images/osmena.jpg', interests: ['hiking', 'camping', 'outdoors', 'adventure', 'nature', 'photography', 'exploration', 'sports'],
     estimatedBudget: 700, duration: 6, atmosphere: 'Open-air and energizing',
-    activities: ['Short summit hike', 'Sunrise viewing', 'Photography'],
-    travelTips: ['Start early for cooler weather and clearer views.', 'Wear shoes with grip.', 'Bring water; stalls near the trail are limited.'],
+    activities: ['Short summit hike', 'Sunrise viewing', 'Photography', 'Plan an overnight stay at a designated nearby campsite'],
+    travelTips: ['Start early for cooler weather and clearer views.', 'Wear shoes with grip and bring enough water.', 'Confirm campsite access, permits, facilities and current fees with local authorities before camping.', 'Check the weather forecast and follow local trail and fire-safety guidance.'],
   }),
   new Destination({
     id: 'tops-lookout', name: 'Tops Lookout', location: 'Busay, Cebu City', category: 'City',

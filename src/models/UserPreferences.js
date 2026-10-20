@@ -3,7 +3,8 @@ export const MOODS = {
   'Gaming and Entertainment': ['gaming', 'arcade', 'movies', 'entertainment'],
   'Anime and Pop Culture': ['anime', 'pop culture', 'collectibles', 'movies'],
   'Sports and Adventure': ['basketball', 'sports', 'adventure', 'hiking', 'canyoneering'],
-  'Nature and Exploration': ['nature', 'waterfalls', 'hiking', 'photography', 'exploration'],
+  'Nature and Exploration': ['nature', 'waterfalls', 'hiking', 'photography', 'exploration', 'outdoors'],
+  'Camping and the Outdoors': ['camping', 'outdoors', 'hiking', 'nature', 'adventure'],
 }
 
 // Highest amount (pesos) allowed by each budget choice.

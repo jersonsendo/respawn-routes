@@ -54,7 +54,7 @@ export default function EscapeFinder() {
 
   return (
     <>
-      <PageHeader title="Choose Your Escape" subtitle="Tell us your mood, time, budget and setting. We filter our local destination list to match. No AI and no live travel data, just simple rules." />
+      <PageHeader title="Choose Your Escape" subtitle="Tell us your mood, time, budget and setting—from a quiet beach break to a mountain hike or camping trip. We match your choices to the destinations and activities in the app." />
       <div className="container-page mt-6">
         <form onSubmit={handleSubmit} className="card space-y-5 p-5">
           <Choice legend="Travel mood" name="mood" options={Object.keys(MOODS)} value={form.travelMood} onChange={set('travelMood')} />

@@ -11,5 +11,6 @@
 
 ## Project checks
 - Escape Finder results respond to budget, duration, setting and interest preferences.
+- The Camping and the Outdoors mood recommends Osmeña Peak; camping and outdoor experiences resolve to that destination.
 - Itinerary totals are calculated from saved items and update when items are changed.
 - The production bundle is generated in `dist/`.
