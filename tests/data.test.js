@@ -20,12 +20,15 @@ test('outdoor mood recommends Osmeña Peak with a useful match explanation', () 
   const destination = destinations.find((item) => item.id === 'osmena-peak')
   const preferences = new UserPreferences({
     travelMood: 'Camping and the Outdoors',
-    preferredSetting: 'Mountains',
   })
 
   assert.ok(destination)
   assert.equal(preferences.matchesDestination(destination), true)
   assert.match(preferences.explain(destination).join(' '), /camping|outdoors|hiking/i)
+  assert.deepEqual(
+    destinations.filter((item) => preferences.matchesDestination(item)).map((item) => item.id),
+    ['osmena-peak'],
+  )
 })
 
 test('camping information stays unverified until a source is recorded', () => {

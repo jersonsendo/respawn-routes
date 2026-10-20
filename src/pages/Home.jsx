@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-ink">
-        <SmartImage src="/images/badian.jpg" alt="Calm coastline in Badian, Cebu" label="Badian, Cebu" className="absolute inset-0 -z-10 h-full w-full opacity-60" />
+        <SmartImage src="/images/matutinao.jpg" alt="Calm coastline in Badian, Cebu" label="Badian, Cebu" className="absolute inset-0 -z-10 h-full w-full opacity-60" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent" />
         <div className="container-page py-20 sm:py-28">
           <h1 className="max-w-2xl text-4xl font-extrabold text-white sm:text-6xl">Take a break. Find your next adventure.</h1>

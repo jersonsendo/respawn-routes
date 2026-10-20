@@ -5,7 +5,7 @@ const destinations = [
   new Destination({
     id: 'badian-matutinao', name: 'Matutinao Shoreline, Badian', location: 'Badian, Cebu', category: 'Beach',
     description: 'A quiet stretch of coast in southwest Cebu, a good pick for slow mornings and sunset walks away from the busier resort areas.',
-    image: '/images/badian.jpg', interests: ['chill', 'relax', 'peaceful', 'sunset', 'beach', 'photography'],
+    image: '/images/matutinao.jpg', interests: ['chill', 'relax', 'peaceful', 'sunset', 'beach', 'photography'],
     estimatedBudget: 800, duration: 8, atmosphere: 'Peaceful and slow-paced',
     activities: ['Sunset beach walk', 'Swimming', 'Coastal photography', 'Local seafood meal'],
     travelTips: ['Leave early from Cebu City because the bus ride to Badian takes several hours.', 'Bring cash; small coastal areas may have limited ATMs.', 'Check sea conditions before swimming.'],

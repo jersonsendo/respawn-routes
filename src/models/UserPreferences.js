@@ -40,13 +40,21 @@ export default class UserPreferences {
   matchesSetting(category) { return !this.preferredSetting || category === this.preferredSetting }
   sharedInterests(interests) { return this.interests.filter((i) => interests.includes(i)) }
 
+  matchesMood(destination) {
+    if (!this.travelMood) return true
+    if (this.travelMood === 'Camping and the Outdoors') {
+      return destination.interests.includes('camping') || destination.interests.includes('outdoors')
+    }
+    return this.sharedInterests(destination.interests).length > 0
+  }
+
   // A destination matches when it passes every filter the user filled in.
   matchesDestination(d) {
     return (
       this.fitsBudget(d.estimatedBudget) &&
       this.fitsTime(d.duration) &&
       this.matchesSetting(d.category) &&
-      (!this.travelMood || this.sharedInterests(d.interests).length > 0)
+      this.matchesMood(d)
     )
   }
 

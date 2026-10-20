@@ -5,9 +5,14 @@
 - `npm test` runs the automated model and destination-data test suite.
 
 ## Application smoke tests
-- Core application routes render, including Home, Explore, Experiences, Trip Planner and destination details.
-- Explore and Experiences accept category filters from their URL.
-- The mobile navigation opens and closes with the Escape key.
+- All application routes render, including unknown-route and invalid-destination states.
+- Explore search, category and budget filters show matching results, empty states, and reset correctly.
+- URL category filters select the expected categories on Explore and Experiences.
+- Camping mood results include Osmeña Peak and exclude unrelated nature/adventure matches.
+- Favorites persist across reloads; itinerary additions, duplicate feedback, totals, and removal work.
+- The mobile navigation opens and closes with the Escape key without horizontal overflow at 390 px.
+- Planner export content includes the current item, totals, estimate disclaimer, and expected filename.
+- Camping verification status and the missing-source state display correctly.
 - Destination, experience and itinerary records use valid, unique identifiers.
 
 ## Project checks
