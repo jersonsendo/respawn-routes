@@ -10,9 +10,9 @@ A personalized travel discovery and trip-planning app for students, working stud
 - **Destination Details** `/destinations/:id` – activities, tips, budget, duration, add to itinerary, favorite toggle, invalid-ID handling
 - **Escape Finder** `/escape-finder` – mood, time, budget and setting inputs; matching destinations with reasons; reset; empty state
 - **Experiences** `/experiences` – five categories, search and category filter
-- **Trip Planner** `/planner` – add/remove items, clear with confirmation, dynamic totals, duplicates blocked
+- **Trip Planner** `/planner` – add/remove items, clear with confirmation, dynamic totals, duplicates blocked, download a text itinerary
 - **Favorites** `/favorites`, **Dashboard** `/dashboard`, **About** `/about`
-- Responsive navbar with active-route highlight and mobile menu
+- Responsive navbar with active-route highlight, an Escape-key closable mobile menu, and mobile menu controls announced to assistive technology
 
 ## Tech stack
 React 18, Vite, JavaScript (ES6+), Tailwind CSS 3, React Router DOM 6, React Hooks, Lucide React (icons). No backend, database, external API, authentication or payments.
@@ -75,6 +75,7 @@ respawn-routes/
 - Entries marked "(Sample Data)" are fictional demonstration venues.
 - Travel photos must be added by you; fallback blocks are shown otherwise.
 - Data lives only in the browser's localStorage.
+- The itinerary download is a plain-text snapshot of current items and estimates; it does not book travel or include live availability.
 
 ## Publish to GitHub
 ```bash

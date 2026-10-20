@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Trash2 } from 'lucide-react'
+import { Download, Trash2 } from 'lucide-react'
 import EmptyState from '../components/EmptyState.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import { useApp } from '../context/AppContext.jsx'
@@ -7,6 +7,32 @@ import { formatDuration, peso } from '../utils/format.js'
 
 export default function Planner() {
   const { plan, removeFromItinerary, clearItinerary } = useApp()
+
+  const handleExport = () => {
+    const content = [
+      'Respawn Routes - Trip Plan',
+      `Created: ${new Date().toLocaleDateString()}`,
+      '',
+      ...plan.items.flatMap((item, index) => [
+        `${index + 1}. ${item.name} (${item.itemType})`,
+        `   Estimated cost: ${peso(item.estimatedCost)}`,
+        `   Estimated duration: ${formatDuration(item.duration)}`,
+        '',
+      ]),
+      `Estimated total cost: ${peso(plan.totalBudget)}`,
+      `Estimated total duration: ${formatDuration(plan.totalDuration)}`,
+      '',
+      'Budgets and durations are estimates, not live prices or travel times.',
+    ].join('\n')
+    const url = URL.createObjectURL(new Blob([content], { type: 'text/plain;charset=utf-8' }))
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'respawn-routes-itinerary.txt'
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    window.setTimeout(() => URL.revokeObjectURL(url), 0)
+  }
 
   const handleClear = () => {
     if (window.confirm('Remove everything from your itinerary?')) clearItinerary()
@@ -39,6 +65,7 @@ export default function Planner() {
               <p className="flex justify-between"><span>Items</span><strong>{plan.getItemCount()}</strong></p>
               <p className="flex justify-between"><span>Estimated total cost</span><strong>{peso(plan.totalBudget)}</strong></p>
               <p className="flex justify-between"><span>Estimated duration</span><strong>{formatDuration(plan.totalDuration)}</strong></p>
+              <button className="btn-outline mt-3 w-full" onClick={handleExport}><Download className="h-4 w-4" aria-hidden="true" /> Download itinerary</button>
               <button className="btn-danger mt-3 w-full" onClick={handleClear}>Clear itinerary</button>
             </aside>
           </div>

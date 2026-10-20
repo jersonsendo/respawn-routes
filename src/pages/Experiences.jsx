@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import experiences, { EXPERIENCE_CATEGORIES } from '../data/experiences.js'
 import ExperienceCard from '../components/ExperienceCard.jsx'
@@ -7,8 +7,13 @@ import PageHeader from '../components/PageHeader.jsx'
 
 export default function Experiences() {
   const [params] = useSearchParams()
+  const categoryParam = params.get('category') ?? 'All'
   const [search, setSearch] = useState('')
-  const [category, setCategory] = useState(params.get('category') ?? 'All')
+  const [category, setCategory] = useState(categoryParam)
+
+  useEffect(() => {
+    setCategory(EXPERIENCE_CATEGORIES.includes(categoryParam) ? categoryParam : 'All')
+  }, [categoryParam])
 
   const results = experiences
     .filter((e) => e.matchesSearch(search))

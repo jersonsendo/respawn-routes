@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import destinations, { DESTINATION_CATEGORIES } from '../data/destinations.js'
 import { BUDGETS } from '../models/UserPreferences.js'
@@ -7,11 +7,18 @@ import EmptyState from '../components/EmptyState.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 
 export default function Explore() {
-  const [params] = useSearchParams()
-  const [search, setSearch] = useState(params.get('q') ?? '')
-  const [category, setCategory] = useState(params.get('category') ?? 'All')
+  const [params, setParams] = useSearchParams()
+  const queryParam = params.get('q') ?? ''
+  const categoryParam = params.get('category') ?? 'All'
+  const [search, setSearch] = useState(queryParam)
+  const [category, setCategory] = useState(categoryParam)
   const [budget, setBudget] = useState('Any')
   const [sort, setSort] = useState('name')
+
+  useEffect(() => setSearch(queryParam), [queryParam])
+  useEffect(() => {
+    setCategory(DESTINATION_CATEGORIES.includes(categoryParam) ? categoryParam : 'All')
+  }, [categoryParam])
 
   const results = destinations
     .filter((d) => d.matchesSearch(search))
@@ -23,7 +30,13 @@ export default function Explore() {
       return a.name.localeCompare(b.name)
     })
 
-  const reset = () => { setSearch(''); setCategory('All'); setBudget('Any'); setSort('name') }
+  const reset = () => {
+    setSearch('')
+    setCategory('All')
+    setBudget('Any')
+    setSort('name')
+    setParams({})
+  }
 
   return (
     <>

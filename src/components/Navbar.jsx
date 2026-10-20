@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Compass, Menu, X } from 'lucide-react'
 
@@ -15,6 +15,15 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  useEffect(() => {
+    if (!open) return undefined
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [open])
+
   const linkClass = ({ isActive }) =>
     `rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${isActive ? 'bg-teal text-white' : 'text-ink hover:bg-teal-soft'}`
 
@@ -29,12 +38,12 @@ export default function Navbar() {
             <NavLink key={l.to} to={l.to} end={l.to === '/'} className={linkClass}>{l.label}</NavLink>
           ))}
         </nav>
-        <button className="rounded-lg p-2 text-ink lg:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Toggle menu">
-          {open ? <X /> : <Menu />}
+        <button className="rounded-lg p-2 text-ink lg:hidden" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? 'Close menu' : 'Open menu'}>
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
       {open && (
-        <nav className="container-page flex flex-col gap-1 pb-4 lg:hidden" aria-label="Mobile navigation">
+        <nav id="mobile-navigation" className="container-page flex flex-col gap-1 pb-4 lg:hidden" aria-label="Mobile navigation">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} end={l.to === '/'} className={linkClass} onClick={() => setOpen(false)}>{l.label}</NavLink>
           ))}
