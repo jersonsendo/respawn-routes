@@ -21,7 +21,7 @@ export default function Experiences() {
 
   return (
     <>
-      <PageHeader title="Experiences" subtitle="Activities grouped by mood. Entries marked “Sample” are fictional demo data, not real venues." />
+      <PageHeader title="Experiences" subtitle="Find activities to match your interests and build a trip around the places you want to visit." />
       <div className="container-page mt-6">
         <div className="card grid gap-3 p-4 sm:grid-cols-2">
           <div>

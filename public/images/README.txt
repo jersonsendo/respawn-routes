@@ -1,5 +1,6 @@
-Add your travel photos here. File names must match the `image` field in src/data/destinations.js:
-badian.jpg, kawasan.jpg, moalboal.jpg, osmena.jpg, tops.jpg, heritage.jpg, mantayupan.jpg,
-camotes.jpg, bantayan.jpg, cinema.jpg, sample-arcade.jpg, sample-hoops.jpg, sample-anime.jpg
-Use photos you took or that are free to use (e.g. your own, Unsplash/Pexels with credit).
-Until you add them, the app shows a colored fallback block with the place name, so nothing breaks.
+Destination photos used by the application:
+bantayan.jpg, camotes.jpg, cinema.jpg, heritage.jpg, kawasan.jpg, mantayupan.jpg,
+matutinao.jpg, moalboal.jpg, osmena.jpg, tops.jpg
+
+Use photos you have permission to use and provide any required attribution. If a photo is
+unavailable, the application displays a labeled fallback so destination details remain usable.

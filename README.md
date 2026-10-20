@@ -2,20 +2,20 @@
 
 *Take a break. Find your next adventure. Respawn refreshed.*
 
-A personalized travel discovery and trip-planning app for students, working students, gamers, anime fans, movie fans, basketball fans and adventure seekers. Focused on affordable escapes in Cebu and the Philippines (featuring Badian, Cebu). Theme: **Hospitality & Tourism**. Midterm Practical Exam project.
+A destination discovery and trip-planning application focused on Cebu, Philippines. Respawn Routes helps travelers explore destinations, compare estimated budgets, find activities that match their interests, and organize a personal itinerary.
 
 ## Features
 - **Home** `/` – hero, destination search, featured destinations, category shortcuts, Escape Finder button
 - **Explore** `/explore` – search, category filter, budget filter, sort by name or budget, empty state
 - **Destination Details** `/destinations/:id` – activities, tips, budget, duration, add to itinerary, favorite toggle, invalid-ID handling
 - **Escape Finder** `/escape-finder` – mood, time, budget and setting inputs; matching destinations with reasons; reset; empty state
-- **Experiences** `/experiences` – five categories, search and category filter
+- **Experiences** `/experiences` – activity categories, search and category filter
 - **Trip Planner** `/planner` – add/remove items, clear with confirmation, dynamic totals, duplicates blocked, download a text itinerary
 - **Favorites** `/favorites`, **Dashboard** `/dashboard`, **About** `/about`
 - Responsive navbar with active-route highlight, an Escape-key closable mobile menu, and mobile menu controls announced to assistive technology
 
 ## Tech stack
-React 18, Vite, JavaScript (ES6+), Tailwind CSS 3, React Router DOM 6, React Hooks, Lucide React (icons). No backend, database, external API, authentication or payments.
+React 18, Vite, JavaScript (ES6+), Tailwind CSS 3, React Router DOM 6, React Hooks and Lucide React.
 
 ## Install and run
 ```bash
@@ -24,12 +24,12 @@ npm run dev      # development server (usually http://localhost:5173)
 npm run build    # production build into dist/
 npm run preview  # preview the build
 ```
-Add your own photos to `public/images/` (see `public/images/README.txt`). Without them, a fallback block is shown.
+Destination photos are stored in `public/images/`. If an image is unavailable, the application displays a labeled fallback.
 
 ## Folder structure
 ```text
 respawn-routes/
-├── docs/                 class-diagram.png/.pdf/.mmd, figma-blueprint.md, oral-exam-guide.md, testing-checklist.md
+├── docs/                 class-diagram.png/.pdf/.mmd, testing-checklist.md
 ├── public/images/        travel photos
 ├── src/
 │   ├── components/       Navbar, Footer, DestinationCard, ExperienceCard, SmartImage, EmptyState, PageHeader, Toast, ScrollToTop
@@ -65,25 +65,20 @@ respawn-routes/
 ## Budget calculations
 `TravelPlan.recalculate()` sums `estimatedCost` and `duration` over its items. The Planner and Dashboard show `plan.totalBudget`, `plan.totalDuration` and `plan.getItemCount()`. Adding the same item twice is rejected with a message.
 
-## Figma and class diagram
-- UML: `docs/class-diagram.png` (also `.pdf` and Mermaid source `.mmd`)
-- Figma: **not created yet** – see `docs/figma-blueprint.md` for frame-by-frame specs. Add your Figma view link here after recreating it: `FIGMA_LINK_HERE`
-- Oral exam guide: `docs/oral-exam-guide.md`; checks performed: `docs/testing-checklist.md`
+## Architecture and verification
+- UML class diagram: `docs/class-diagram.png` (also available as PDF and Mermaid source)
+- Verification summary: `docs/testing-checklist.md`
 
-## Known limitations
-- Educational demo: no booking, live prices, maps or availability. Budgets are rough estimates and may be out of date.
-- Entries marked "(Sample Data)" are fictional demonstration venues.
-- Travel photos must be added by you; fallback blocks are shown otherwise.
-- Data lives only in the browser's localStorage.
-- The itinerary download is a plain-text snapshot of current items and estimates; it does not book travel or include live availability.
+## Project scope
+- Destination budgets and activity costs are planning estimates, not live quotes. Confirm prices, schedules, transport and venue availability before traveling.
+- The Escape Finder matches saved preferences against the destination information included in the app.
+- Favorites, preferences and itinerary items are stored in the current browser using `localStorage`.
+- The itinerary download is a text summary of the current plan; it does not make reservations.
 
-## Publish to GitHub
+## GitHub workflow
 ```bash
-git init
 git add .
-git commit -m "Respawn Routes midterm project"
-git branch -M main
-git remote add origin https://github.com/<your-username>/respawn-routes.git
-git push -u origin main
+git commit -m "Finalize Respawn Routes"
+git push
 ```
-Create the empty repository on github.com first. `node_modules/` and `dist/` are already in `.gitignore`.
+`node_modules/` and `dist/` are excluded from version control.

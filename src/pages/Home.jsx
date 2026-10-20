@@ -23,7 +23,7 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/60 to-transparent" />
         <div className="container-page py-20 sm:py-28">
           <h1 className="max-w-2xl text-4xl font-extrabold text-white sm:text-6xl">Take a break. Find your next adventure.</h1>
-          <p className="mt-4 max-w-xl text-lg text-white/90">Respawn Routes helps students, gamers, anime fans and ballers plan affordable escapes around Cebu and the Philippines. Respawn refreshed.</p>
+          <p className="mt-4 max-w-xl text-lg text-white/90">Discover places across Cebu, compare estimated costs, and plan activities around your interests, schedule, and budget.</p>
           <form onSubmit={handleSearch} className="mt-8 flex max-w-xl flex-col gap-2 sm:flex-row" role="search">
             <label htmlFor="home-search" className="sr-only">Search destinations</label>
             <input id="home-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try “beach”, “waterfall” or “Badian”" className="field flex-1" />

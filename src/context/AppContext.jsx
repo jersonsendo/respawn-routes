@@ -2,15 +2,18 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import ItineraryItem from '../models/ItineraryItem.js'
 import TravelPlan from '../models/TravelPlan.js'
 import UserPreferences from '../models/UserPreferences.js'
+import destinations from '../data/destinations.js'
+import experiences from '../data/experiences.js'
 
 const AppContext = createContext(null)
+const destinationIds = new Set(destinations.map((destination) => destination.id))
 
 // useState that also saves its value in localStorage so it survives a page refresh.
-function useStoredState(key, initial) {
+function useStoredState(key, initial, normalize = (saved) => saved) {
   const [value, setValue] = useState(() => {
     try {
       const saved = localStorage.getItem(key)
-      return saved ? JSON.parse(saved) : initial
+      return saved ? normalize(JSON.parse(saved)) : initial
     } catch {
       return initial
     }
@@ -22,8 +25,24 @@ function useStoredState(key, initial) {
 }
 
 export function AppProvider({ children }) {
-  const [favoriteIds, setFavoriteIds] = useStoredState('rr-favorites', [])
-  const [savedItems, setSavedItems] = useStoredState('rr-itinerary', [])
+  const [favoriteIds, setFavoriteIds] = useStoredState('rr-favorites', [], (saved) =>
+    Array.isArray(saved) ? saved.filter((id) => destinationIds.has(id)) : [],
+  )
+  const [savedItems, setSavedItems] = useStoredState('rr-itinerary', [], (saved) =>
+    Array.isArray(saved)
+      ? saved.flatMap((item) => {
+        if (item?.itemType === 'destination') {
+          const destination = destinations.find((entry) => entry.id === item.referenceId)
+          return destination ? [{ ...ItineraryItem.fromDestination(destination) }] : []
+        }
+        if (item?.itemType === 'experience') {
+          const experience = experiences.find((entry) => entry.id === item.referenceId)
+          return experience ? [{ ...ItineraryItem.fromExperience(experience) }] : []
+        }
+        return []
+      })
+      : [],
+  )
   const [savedPrefs, setSavedPrefs] = useStoredState('rr-preferences', null)
   const [message, setMessage] = useState('')
 

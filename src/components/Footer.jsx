@@ -14,7 +14,7 @@ export default function Footer() {
           <Link to="/about" className="hover:text-lime">About</Link>
         </div>
       </div>
-      <p className="border-t border-white/10 py-3 text-center text-xs">Educational demo. Budgets are rough estimates, not live prices.</p>
+      <p className="border-t border-white/10 py-3 text-center text-xs">Travel costs and durations are estimates. Confirm details before your visit.</p>
     </footer>
   )
 }

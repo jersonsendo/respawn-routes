@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import PageHeader from '../components/PageHeader.jsx'
 
-const features = ['Search, filter and sort destinations', 'Personalized Escape Finder with plain-language reasons', 'Experiences grouped by mood', 'Trip Planner with estimated totals', 'Favorites and a summary dashboard']
-const users = ['Students and working students with limited free time', 'Gamers, anime fans, movie fans and basketball players', 'Anyone who wants an affordable local escape']
-const limits = ['Educational demonstration project, not a booking system', 'No live prices, availability or maps; budgets are rough estimates', 'Entries marked “Sample Data” are fictional', 'Recommendations come from simple filtering rules, not artificial intelligence', 'Data is saved only in your browser (localStorage)']
+const features = ['Search, filter and sort destinations by category and estimated budget', 'Match destinations to preferred interests, time and setting', 'Browse experiences and add destinations or activities to an itinerary', 'Save favorites and review trip estimates on the dashboard', 'Download a concise copy of your planned itinerary']
+const users = ['Travelers exploring Cebu and nearby destinations', 'Visitors looking for activities that fit their interests and schedule', 'Groups planning a local trip with a shared cost estimate']
+const limits = ['Prices and durations are planning estimates; confirm current details with local providers', 'Schedules, transport, weather and venue availability can change', 'Favorites, preferences and itineraries are saved in this browser', 'The Escape Finder matches preferences against the destination information included in the app']
 
 function List({ title, items }) {
   return (
@@ -19,7 +19,7 @@ export default function About() {
     <>
       <PageHeader title="About Respawn Routes" subtitle="Take a break. Find your next adventure. Respawn refreshed." />
       <div className="container-page mt-6 space-y-6">
-        <p className="max-w-3xl">Respawn Routes is a tourism planner for people who need short, affordable breaks. It focuses on Cebu and the Philippines and helps you match a trip to your mood, time and budget.</p>
+        <p className="max-w-3xl">Respawn Routes is a destination discovery and trip-planning application focused on Cebu. Explore places, compare estimated costs and durations, and organize activities around your interests and available time.</p>
         <div className="grid gap-6 md:grid-cols-3">
           <List title="Features" items={features} />
           <List title="Who it is for" items={users} />

@@ -1,8 +1,6 @@
 import Destination from '../models/Destination.js'
 
-// All destination records live here. Budgets are rough per-person ESTIMATES in pesos
-// (transport + fees + food) and can change. Entries marked "(Sample Data)" are fictional
-// demonstration entries, NOT real venues.
+// Budget values are per-person planning estimates in pesos and may change.
 const destinations = [
   new Destination({
     id: 'badian-matutinao', name: 'Matutinao Shoreline, Badian', location: 'Badian, Cebu', category: 'Beach',
@@ -77,36 +75,12 @@ const destinations = [
     travelTips: ['Plan for a long travel day (land plus ferry).', 'Pack light for island hopping.', 'Book ferry and stay ahead of time.'],
   }),
   new Destination({
-    id: 'cebu-mall-cinema', name: 'Cebu Mall Cinema Night', location: 'Cebu City', category: 'Entertainment Venues',
-    description: 'A budget-friendly movie-and-snacks night at any Cebu City mall cinema. Pick the mall nearest your route.',
+    id: 'cebu-mall-cinema', name: 'Cebu City Mall Entertainment', location: 'Cebu City', category: 'Entertainment Venues',
+    description: 'Plan an indoor city break around a mall cinema, dining options and other entertainment available at your chosen Cebu City mall.',
     image: '/images/cinema.jpg', interests: ['movies', 'entertainment', 'pop culture', 'chill', 'relax'],
     estimatedBudget: 450, duration: 4, atmosphere: 'Cozy and indoor',
-    activities: ['Watch a film', 'Dinner or snacks', 'Window shopping'],
-    travelTips: ['Check showtimes online first.', 'Go on a weekday for cheaper tickets, where offered.', 'Plan transport home after late shows.'],
-  }),
-  new Destination({
-    id: 'sample-arcade-lounge', name: 'Sample Arcade & Gaming Lounge (Sample Data)', location: 'Cebu City (fictional)', category: 'Entertainment Venues',
-    description: 'Sample demonstration entry, not a real venue. Represents a gaming lounge with console stations and arcade cabinets.',
-    image: '/images/sample-arcade.jpg', interests: ['gaming', 'arcade', 'entertainment', 'pop culture'],
-    estimatedBudget: 350, duration: 3, atmosphere: 'Playful and social',
-    activities: ['Console sessions', 'Arcade games', 'Snack counter'],
-    travelTips: ['This is sample data; search for a real gaming cafe near you.', 'Set a time and budget limit before you start.'],
-  }),
-  new Destination({
-    id: 'sample-hoops-court', name: 'Sample Pickup Hoops Court (Sample Data)', location: 'Cebu City (fictional)', category: 'Entertainment Venues',
-    description: 'Sample demonstration entry, not a real venue. Represents a community basketball court for casual pickup games.',
-    image: '/images/sample-hoops.jpg', interests: ['basketball', 'sports', 'adventure', 'entertainment'],
-    estimatedBudget: 200, duration: 3, atmosphere: 'Energetic and friendly',
-    activities: ['Pickup games', 'Shooting drills', 'Cool-down snack'],
-    travelTips: ['This is sample data; look for a public court near you.', 'Bring water and a towel.'],
-  }),
-  new Destination({
-    id: 'sample-anime-popup', name: 'Sample Anime & Collectibles Pop-up (Sample Data)', location: 'Cebu City (fictional)', category: 'Entertainment Venues',
-    description: 'Sample demonstration entry, not a real event. Represents a convention-style pop-up with merchandise stalls and cosplay photo spots.',
-    image: '/images/sample-anime.jpg', interests: ['anime', 'pop culture', 'collectibles', 'movies', 'entertainment'],
-    estimatedBudget: 500, duration: 4, atmosphere: 'Fun and colorful',
-    activities: ['Browse merchandise stalls', 'Cosplay photos', 'Trivia corner'],
-    travelTips: ['This is sample data; watch local event pages for real conventions.', 'Set a souvenir budget before you go.'],
+    activities: ['Watch a film', 'Explore available entertainment', 'Dinner or snacks'],
+    travelTips: ['Check the chosen mall’s current listings and showtimes.', 'Compare ticket and activity prices before setting your budget.', 'Plan transport home after late events.'],
   }),
 ]
 
