@@ -13,6 +13,7 @@ A destination discovery and trip-planning application focused on Cebu, Philippin
 - **Trip Planner** `/planner` – add/remove items, clear with confirmation, dynamic totals, duplicates blocked, download a text itinerary
 - **Favorites** `/favorites`, **Dashboard** `/dashboard`, **About** `/about`
 - Responsive navbar with active-route highlight, an Escape-key closable mobile menu, and mobile menu controls announced to assistive technology
+- Camping listings include a visible verification status and fields for recording a source and verification date; unconfirmed access is clearly identified.
 
 ## Tech stack
 React 18, Vite, JavaScript (ES6+), Tailwind CSS 3, React Router DOM 6, React Hooks and Lucide React.
@@ -21,6 +22,7 @@ React 18, Vite, JavaScript (ES6+), Tailwind CSS 3, React Router DOM 6, React Hoo
 ```bash
 npm install
 npm run dev      # development server (usually http://localhost:5173)
+npm test         # run automated model and destination-data tests
 npm run build    # production build into dist/
 npm run preview  # preview the build
 ```
@@ -29,7 +31,8 @@ Destination photos are stored in `public/images/`. If an image is unavailable, t
 ## Folder structure
 ```text
 respawn-routes/
-├── docs/                 class-diagram.png/.pdf/.mmd, testing-checklist.md
+├── docs/                 class-diagram.png/.pdf/.mmd, design-system.md, testing-checklist.md
+├── tests/                automated model and destination-data tests
 ├── public/images/        travel photos
 ├── src/
 │   ├── components/       Navbar, Footer, DestinationCard, ExperienceCard, SmartImage, EmptyState, PageHeader, Toast, ScrollToTop
@@ -67,11 +70,13 @@ respawn-routes/
 
 ## Architecture and verification
 - UML class diagram: `docs/class-diagram.png` (also available as PDF and Mermaid source)
+- Figma handoff: `docs/design-system.md` (design tokens, components, responsive frames, and interaction states)
 - Verification summary: `docs/testing-checklist.md`
 
 ## Project scope
 - Destination budgets and activity costs are planning estimates, not live quotes. Confirm prices, schedules, transport and venue availability before traveling.
 - Camping is a planning suggestion. Confirm legal campsite access, permits, facilities, weather and safety guidance with local authorities before departure.
+- Camping verification fields are provided to record an authoritative source and review date. A blank source means the information is not verified.
 - The Escape Finder matches saved preferences against the destination information included in the app.
 - Favorites, preferences and itinerary items are stored in the current browser using `localStorage`.
 - The itinerary download is a text summary of the current plan; it does not make reservations.

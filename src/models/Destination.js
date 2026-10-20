@@ -5,7 +5,7 @@ export default class Destination {
   constructor({
     id, name, location, category, description, image,
     interests = [], estimatedBudget, duration,
-    activities = [], travelTips = [], atmosphere,
+    activities = [], travelTips = [], atmosphere, campingVerification = null,
   }) {
     this.id = id
     this.name = name
@@ -19,6 +19,7 @@ export default class Destination {
     this.activities = activities
     this.travelTips = travelTips
     this.atmosphere = atmosphere
+    this.campingVerification = campingVerification
   }
 
   getBudgetLabel() { return peso(this.estimatedBudget) }

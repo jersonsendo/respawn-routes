@@ -57,6 +57,31 @@ export default function DestinationDetails() {
           <ul className="mt-3 list-disc space-y-1 pl-5">{d.travelTips.map((t) => <li key={t}>{t}</li>)}</ul>
         </section>
       </div>
+      {d.campingVerification && (
+        <section className="card mt-6 p-5" aria-labelledby="camping-verification-heading">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h2 id="camping-verification-heading" className="text-xl font-bold">Camping information</h2>
+            <span className="chip">{d.campingVerification.status === 'verified' ? 'Source verified' : 'Not verified'}</span>
+          </div>
+          <p className="mt-3 text-sm">{d.campingVerification.notes}</p>
+          <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+            <div>
+              <dt className="text-slate-500">Information source</dt>
+              <dd className="font-semibold text-ink">
+                {d.campingVerification.sourceUrl ? (
+                  <a className="text-teal underline" href={d.campingVerification.sourceUrl} target="_blank" rel="noreferrer">
+                    {d.campingVerification.sourceName || 'View source'}
+                  </a>
+                ) : d.campingVerification.sourceName || 'No source recorded'}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-slate-500">Last verified</dt>
+              <dd className="font-semibold text-ink">{d.campingVerification.lastVerified || 'Not yet verified'}</dd>
+            </div>
+          </dl>
+        </section>
+      )}
       {related.length > 0 && (
         <section className="mt-10">
           <h2 className="text-2xl font-extrabold">Experiences here</h2>
